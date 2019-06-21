@@ -6,6 +6,7 @@ use App\NilaiKaryawan;
 use App\Karyawan;
 use App\Kriteria;
 use App\ValueNilai;
+use App\Jabatan;
 use Illuminate\Http\Request;
 
 class NilaiKaryawanController extends Controller
@@ -55,4 +56,16 @@ class NilaiKaryawanController extends Controller
     return response()->json($data);
   }
 
+  public function showAnalyze()
+  {
+    $getJabatan = Jabatan::where('role','!=','Admin HR')->get();
+    return view('analisa/core', compact('getJabatan'));
+  }
+
+  public function tableResults($jabatan)
+  {
+    $getKriterias = Kriteria::all();
+    $getKaryawans = Karyawan::where('id_jabatan', $jabatan)->get();
+    return view('analisa/tableresults', compact('getKaryawans','getKriterias'));
+  }
 }

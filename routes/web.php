@@ -47,6 +47,13 @@ Route::group(['middleware'=>'auth'], function(){
   Route::post('/nilaiKaryawan/{karyawan}', 'NilaiKaryawanController@updateNilaiKaryawan')->name('NilaiKaryawan.nilai');
   Route::get('nilaiKaryawan/{karyawan}/edit', 'NilaiKaryawanController@editNilaiKaryawan')->name('NilaiKaryawan.edit');
   Route::patch('nilaiKaryawan/{karyawan}/updateexist', 'NilaiKaryawanController@updateExistingNilai')->name('NilaiKaryawan.update');
+  Route::get('/analisa','NilaiKaryawanController@showAnalyze')->name('NilaiKaryawan.analisa');
+  Route::get('/tabelanalisa/{jabatan}','NilaiKaryawanController@tableResults')->name('nilaiKaryawan');
+  Route::put('/updatenilai','KaryawanController@updateNilaiKaryawan')->name('updateNilaiKaryawan');
+});
+
+Route::group(['middleware'=>'adminhr'],function(){
+  Route::get('/analisa','NilaiKaryawanController@showAnalyze')->name('NilaiKaryawan.analisa');
 });
 
 Auth::routes();

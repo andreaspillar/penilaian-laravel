@@ -143,4 +143,18 @@ class KaryawanController extends Controller
       Karyawan::find($id)->delete($id);
       return response()->json('success');
     }
+
+    public function updateNilaiKaryawan(Request $request)
+    {
+      $idKar = $request->id_karyawan;
+      $reqNilai = $request->nilai_karyawan;
+      $setsOfKaryawan = Karyawan::get('id_karyawan', 'nama_karyawan');
+      foreach ((array)$reqNilai as $rK => $val) {
+        $karyawan = Karyawan::find($rK);
+        $karyawan->nilai_karyawan = $val;
+        $karyawan->save();
+      }
+      $data = 'success';
+      return response()->json($data);
+    }
 }

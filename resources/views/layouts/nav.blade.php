@@ -321,7 +321,7 @@
         </a>
       </li>
       <li>
-        <a href="#">
+        <a href="{{route('NilaiKaryawan.analisa')}}">
           <i class="fa fa-sliders"></i> <span>Analisa Karyawan</span>
         </a>
       </li>
