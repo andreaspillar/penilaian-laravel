@@ -116,17 +116,17 @@
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
       </tr>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-        <?php $__currentLoopData = $getKaryawans; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $karyawan): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <form class="uptd" action="#">
+          <?php $__currentLoopData = $getKaryawans; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $karyawan): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
           <tr>
             <td><input class="form-control" type="text" name="id[<?php echo e($karyawan->id_karyawan); ?>]" value="<?php echo e($karyawan->id_karyawan); ?>"></td>
-            <td><input class="form-control" type="text" name="ne[<?php echo e($karyawan->id_karyawan); ?>]" value="<?php echo e($karyawan->nilai); ?>"></td>
+            <td><input class="form-control Result<?php echo e($karyawan->id_karyawan); ?>" type="text" name="ne[<?php echo e($karyawan->id_karyawan); ?>]"></td>
           </tr>
+          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </form>
-        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
-      <?php $__currentLoopData = $getKaryawans; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $karyawan): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-      <script type="text/javascript">
+        <?php $__currentLoopData = $getKaryawans; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $karyawan): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <script type="text/javascript">
         $(document).ready(function(){
           var sum = 0;
           $('.total<?php echo e($karyawan->id_karyawan); ?>').each(function(e){
@@ -134,33 +134,34 @@
           });
           $('.Result<?php echo e($karyawan->id_karyawan); ?>').val(sum.toFixed(5));
         });
-      </script>
-      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        </script>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+        <script type="text/javascript">
+        $(document).ready(function () {
+            form = $(".uptd").serialize();
+            console.log(form);
+            $('.nilaiEmployer').click(function(e){
+              $.ajaxSetup({
+                  headers: {
+                      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                  }
+              });
+              $.ajax({
+                dataType: "json",
+                type : $('meta[name=methodtwo]').attr('content'),
+                url : $('#updateNilaiKaryawan').attr('action'),
+                data: form,
+                success: function(result){
+                  // if(result == 'success'){
+                    // swal("Berhasil", "Karyawan telah dinilai", "success")
+                  // }
+                  console.log(result);
+                }
+              });
+            });
+          });
+        </script>
     </tbody>
   </table>
 </div>
-<script type="text/javascript">
-$(document).ready(function () {
-    form = $(".uptd").serialize();
-    console.log(form);
-    $('.nilaiEmployer').click(function(e){
-      $.ajaxSetup({
-          headers: {
-              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-          }
-      });
-      $.ajax({
-        dataType: "json",
-        type : $('meta[name=methodtwo]').attr('content'),
-        url : $('#updateNilaiKaryawan').attr('action'),
-        data: form,
-        success: function(result){
-          // if(result == 'success'){
-            // swal("Berhasil", "Karyawan telah dinilai", "success")
-          // }
-          console.log(result);
-        }
-      });
-    });
-  });
-</script>

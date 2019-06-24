@@ -31,7 +31,7 @@
                 <li><!-- start message -->
                   <a href="#">
                     <div class="pull-left">
-                      <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                      <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
                     </div>
                     <h4>
                       Support Team
@@ -44,7 +44,7 @@
                 <li>
                   <a href="#">
                     <div class="pull-left">
-                      <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                      <img src="{{asset('dist/img/user3-128x128.jpg')}}" class="img-circle" alt="User Image">
                     </div>
                     <h4>
                       AdminLTE Design Team
@@ -56,7 +56,7 @@
                 <li>
                   <a href="#">
                     <div class="pull-left">
-                      <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                      <img src="{{asset('dist/img/user4-128x128.jpg')}}" class="img-circle" alt="User Image">
                     </div>
                     <h4>
                       Developers
@@ -68,7 +68,7 @@
                 <li>
                   <a href="#">
                     <div class="pull-left">
-                      <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                      <img src="{{asset('dist/img/user3-128x128.jpg')}}" class="img-circle" alt="User Image">
                     </div>
                     <h4>
                       Sales Department
@@ -80,7 +80,7 @@
                 <li>
                   <a href="#">
                     <div class="pull-left">
-                      <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                      <img src="{{asset('dist/img/user4-128x128.jpg')}}" class="img-circle" alt="User Image">
                     </div>
                     <h4>
                       Reviewers
@@ -217,13 +217,13 @@
         <!-- User Account: style can be found in dropdown.less -->
         <li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+            <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="user-image" alt="User Image">
             <span class="hidden-xs">{{Auth::user()->name}}</span>
           </a>
           <ul class="dropdown-menu">
             <!-- User image -->
             <li class="user-header">
-              <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+              <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
 
               <p>
                 {{Auth::user()->name}} - {{Auth::user()->role}}
@@ -261,7 +261,7 @@
     <!-- Sidebar user panel -->
     <div class="user-panel">
       <div class="pull-left image">
-        <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+        <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
       </div>
       <div class="pull-left info">
         <p>{{Auth::user()->name}}</p>
@@ -285,7 +285,7 @@
     $kriteria = App\Kriteria::all();
     $karyawan = App\Karyawan::all();
     ?>
-    <ul class="sidebar-menu" data-widget="tree">
+    <ul class="sidebar-menu tree" data-widget="tree">
       @if(Auth::user()->id_jabatan == 1)
       <li class="header">Halaman Utama</li>
       <li>
@@ -320,10 +320,45 @@
           </span>
         </a>
       </li>
-      <li>
-        <a href="{{route('NilaiKaryawan.analisa')}}">
+      <li class="treeview">
+        <a href="#">
           <i class="fa fa-sliders"></i> <span>Analisa Karyawan</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
         </a>
+        <ul class="treeview-menu">
+          <li>
+            <a href="{{route('NilaiKaryawan.analisa',3)}}">
+              <i class="fa fa-circle-o"></i> <span>Manajer</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{route('NilaiKaryawan.analisa',4)}}">
+              <i class="fa fa-circle-o"></i> <span>Kepala Bidang</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{route('NilaiKaryawan.analisa',5)}}">
+              <i class="fa fa-circle-o"></i> <span>Staff</span>
+           </a>
+          </li>
+          <li>
+            <a href="{{route('NilaiKaryawan.analisa',6)}}">
+              <i class="fa fa-circle-o"></i> <span>Kepala Shift</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{route('NilaiKaryawan.analisa',7)}}">
+              <i class="fa fa-circle-o"></i> <span>Operator</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{route('NilaiKaryawan.analisa',8)}}">
+              <i class="fa fa-circle-o"></i> <span>Outsourcing</span>
+            </a>
+          </li>
+        </ul>
       </li>
       @elseif(Auth::user()->id_jabatan >> 1 && Auth::user()->id_jabatan << 5 )
       <li class="header">Karyawan</li>

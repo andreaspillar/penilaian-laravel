@@ -65,54 +65,8 @@
     </div>
   </section>
 </div>
-<!-- <script type="text/javascript">
-$(document).ready(function(){var sum=0;$('.calculate').each(function(){sum+=parseFloat($(this).val())});$('.jumlah').val(sum);$('.calculate').change(function(){var sum=0;$('.calculate').each(function(){sum+=parseFloat($(this).val())});if(isNaN(sum)){$('.jumlah').val('!=Bilangan')}else{$('.jumlah').val(sum)}});$(".kirimNilai").click(function(e){form=$("#updateNilaiKriteria").serialize();if($(".jumlah").val()!='100'){swal("Gagal","Jumlah Nilai Tidak 100","error")}else{$.ajaxSetup({headers:{'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')}});$.ajax({dataType:"json",type:$('meta[name=methodtwo]').attr('content'),url:$('#updateNilaiKriteria').attr('action'),data:form,success:function(result){if(result=='success'){swal("Berhasil","Nilai Telah Diperbaharui","success")}console.log(result)}})}})});
-</script> -->
 <script type="text/javascript">
-$(document)
-  .ready(function () {
-      var sum = 0;
-      $('.calculate').each(function () {
-          sum += parseFloat($(this).val())
-      });
-      $('.jumlah').val(sum);
-      $('.calculate').change(function () {
-          var sum = 0;
-          $('.calculate').each(function () {
-              sum += parseFloat($(this).val())
-          });
-          if (isNaN(sum)) {
-              $('.jumlah').val('!=Bilangan')
-          } else {
-              $('.jumlah').val(sum)
-          }
-      });
-      form = $("#updateNilaiKriteria").serialize();
-      console.log(form);
-      $(".kirimNilai").click(function (e) {
-          if ($(".jumlah").val() != '100') {
-              swal("Gagal", "Jumlah Nilai Tidak 100", "error")
-          } else {
-              $.ajaxSetup({
-                  headers: {
-                      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                  }
-              });
-              $.ajax({
-                  dataType: "json",
-                  type: $('meta[name=methodtwo]').attr('content'),
-                  url: $('#updateNilaiKriteria').attr('action'),
-                  data: form,
-                  success: function (result) {
-                      // if (result == 'success') {
-                      //     swal("Berhasil", "Nilai Telah Diperbaharui", "success")
-                      // }
-                      console.log(result)
-                  }
-              })
-          }
-      })
-  });
+$(document).ready(function(){var sum=0;$('.calculate').each(function(){sum+=parseFloat($(this).val())});$('.jumlah').val(sum);$('.calculate').change(function(){var sum=0;$('.calculate').each(function(){sum+=parseFloat($(this).val())});if(isNaN(sum)){$('.jumlah').val('!=Bilangan')}else{$('.jumlah').val(sum)}});$(".kirimNilai").click(function(e){form=$("#updateNilaiKriteria").serialize();if($(".jumlah").val()!='100'){swal("Gagal","Jumlah Nilai Tidak 100","error")}else{$.ajaxSetup({headers:{'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')}});$.ajax({dataType:"json",type:$('meta[name=methodtwo]').attr('content'),url:$('#updateNilaiKriteria').attr('action'),data:form,success:function(result){if(result=='success'){swal("Berhasil","Nilai Telah Diperbaharui","success")}console.log(result)}})}})});
 </script>
 <?php $__env->stopSection(); ?>
 

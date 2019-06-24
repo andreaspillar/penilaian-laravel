@@ -56,16 +56,56 @@ class NilaiKaryawanController extends Controller
     return response()->json($data);
   }
 
-  public function showAnalyze()
-  {
-    $getJabatan = Jabatan::where('role','!=','Admin HR')->get();
-    return view('analisa/core', compact('getJabatan'));
-  }
-
-  public function tableResults($jabatan)
+  // Analisa
+  public function analisa($id_jabatan)
   {
     $getKriterias = Kriteria::all();
-    $getKaryawans = Karyawan::where('id_jabatan', $jabatan)->get();
-    return view('analisa/tableresults', compact('getKaryawans','getKriterias'));
+    $getKaryawans = Karyawan::where('id_jabatan', $id_jabatan)->get();
+    $getJabatan = 'Manager';
+    return view('analisa/core', compact('getKaryawans','getKriterias','getJabatan'));
   }
+  public function analisaManager()
+  {
+    $getKriterias = Kriteria::all();
+    $getKaryawans = Karyawan::where('id_jabatan', 3)->get();
+    $getJabatan = 'Manager';
+    return view('analisa/core', compact('getKaryawans','getKriterias','getJabatan'));
+  }
+  public function analisaKabid()
+  {
+    $getKriterias = Kriteria::all();
+    $getKaryawans = Karyawan::where('id_jabatan', 4)->get();
+    $getJabatan = 'Kepala Bidang';
+    return view('analisa/core', compact('getKaryawans','getKriterias','getJabatan'));
+  }
+  public function analisaStaff()
+  {
+    $getKriterias = Kriteria::all();
+    $getKaryawans = Karyawan::where('id_jabatan', 5)->get();
+    $getJabatan = 'Staff';
+    return view('analisa/core', compact('getKaryawans','getKriterias','getJabatan'));
+  }
+  public function analisaKepalaShift()
+  {
+    $getKriterias = Kriteria::all();
+    $getKaryawans = Karyawan::where('id_jabatan', 6)->get();
+    $getJabatan = 'Kepala Shift';
+    return view('analisa/core', compact('getKaryawans','getKriterias','getJabatan'));
+  }
+  public function analisaOperator()
+  {
+    $getKriterias = Kriteria::all();
+    $getKaryawans = Karyawan::where('id_jabatan', 7)->get();
+    $getJabatan = 'Operator';
+    return view('analisa/core', compact('getKaryawans','getKriterias','getJabatan'));
+  }
+  public function analisaOutsourcing()
+  {
+    $getKriterias = Kriteria::all();
+    $getKaryawans = Karyawan::where('id_jabatan', 8)->get();
+    $getJabatan = 'Outsourcing';
+    return view('analisa/core', compact('getKaryawans','getKriterias','getJabatan'));
+  }
+  // Stop Analisa
+
 }
